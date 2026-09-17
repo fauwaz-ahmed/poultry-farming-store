@@ -25,10 +25,7 @@ export function AddToCartButton({
     setError("");
 
     try {
-      const result = await addToCart(
-        productId,
-        quantity
-      );
+      const result = await addToCart(productId, quantity);
 
       if (result?.success === false) {
         throw new Error(
@@ -55,7 +52,6 @@ export function AddToCartButton({
   ) {
     const value = event.target.value;
 
-    // Allow the field to be temporarily empty while typing.
     if (value === "") {
       setQuantity(0);
       return;
@@ -107,15 +103,13 @@ export function AddToCartButton({
   }
 
   return (
-    <div className="space-y-4">
-      {/* Quantity + Cart Controls */}
-      <div className="flex w-full flex-wrap items-center gap-2 sm:gap-3">
+    <div className="space-y-3">
+      {/* Quantity + Add To Cart */}
+      <div className="flex w-full items-center gap-2 sm:gap-3">
         {/* Decrease */}
         <button
           type="button"
-          disabled={
-            loading || quantity <= 1
-          }
+          disabled={loading || quantity <= 1}
           onClick={decreaseQuantity}
           aria-label="Decrease quantity"
           className="flex h-11 w-11 shrink-0 items-center justify-center rounded-lg border border-gray-300 bg-white text-xl font-semibold text-gray-700 transition hover:bg-gray-50 disabled:cursor-not-allowed disabled:opacity-50"
@@ -140,9 +134,7 @@ export function AddToCartButton({
         {/* Increase */}
         <button
           type="button"
-          disabled={
-            loading || quantity >= stock
-          }
+          disabled={loading || quantity >= stock}
           onClick={increaseQuantity}
           aria-label="Increase quantity"
           className="flex h-11 w-11 shrink-0 items-center justify-center rounded-lg border border-gray-300 bg-white text-xl font-semibold text-gray-700 transition hover:bg-gray-50 disabled:cursor-not-allowed disabled:opacity-50"
@@ -155,23 +147,24 @@ export function AddToCartButton({
           type="button"
           disabled={loading || quantity < 1}
           onClick={handleAddToCart}
-          className="h-11 flex-1 rounded-lg bg-green-600 px-5 font-semibold text-white transition hover:bg-green-700 disabled:cursor-not-allowed disabled:opacity-50 sm:flex-none sm:px-7"
+          className="h-11 min-w-0 flex-1 rounded-lg bg-green-600 px-3 font-semibold whitespace-nowrap text-white transition hover:bg-green-700 disabled:cursor-not-allowed disabled:opacity-50 sm:flex-none sm:px-7"
         >
-          {loading
-            ? "Adding..."
-            : "Add to Cart"}
+          {loading ? "Adding..." : "Add to Cart"}
         </button>
-
-        {/* Small Cart Button */}
-        <Link
-          href="/cart"
-          aria-label="View cart"
-          title="View cart"
-          className="flex h-11 w-11 shrink-0 items-center justify-center rounded-lg border border-green-600 bg-white text-xl transition hover:bg-green-50"
-        >
-          🛒
-        </Link>
       </div>
+
+      {/* Cart Button */}
+      <Link
+        href="/cart"
+        aria-label="View cart"
+        title="View cart"
+        className="flex h-11 w-full items-center justify-center rounded-lg border border-green-600 bg-white text-xl transition hover:bg-green-50"
+      >
+        🛒
+        <span className="ml-2 text-sm font-semibold text-green-700">
+          View Cart
+        </span>
+      </Link>
 
       {/* Success Message */}
       {message && (
