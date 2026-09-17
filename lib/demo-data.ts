@@ -1,0 +1,7 @@
+import type { ProductDTO } from "./types";
+export const demoProducts:ProductDTO[]=[
+{_id:"1",name:"Farm Fresh Broiler Chicken",slug:"farm-fresh-broiler-chicken",category:"chickens",description:"Healthy farm-raised broiler chicken listing.",images:[],price:260,stock:25,unit:"bird",sku:"CHK-001",active:true,featured:true,details:{breedType:"Broiler",age:"5-6 weeks",weight:"1.8-2.2 kg"}},
+{_id:"2",name:"Broiler Starter Feed",slug:"broiler-starter-feed",category:"poultry-feed",description:"Starter feed product listing.",images:[],price:1450,discountPrice:1399,stock:18,unit:"25 kg bag",sku:"FEED-001",active:true,featured:true,details:{feedType:"Starter",packageWeight:"25 kg"}},
+{_id:"3",name:"Poultry Health Product",slug:"poultry-health-product",category:"poultry-medicines",description:"Informational product listing. Use only according to label/veterinary advice.",images:[],price:320,stock:10,unit:"pack",sku:"MED-001",active:true,featured:true,details:{productType:"Health product",packSize:"100 ml"}},
+{_id:"4",name:"Automatic Poultry Drinker",slug:"automatic-poultry-drinker",category:"farm-equipment",description:"Farm watering equipment.",images:[],price:180,stock:40,unit:"piece",sku:"EQ-001",active:true,featured:true,details:{equipmentType:"Drinker",material:"Food-grade plastic"}}
+];
